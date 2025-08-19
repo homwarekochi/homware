@@ -145,9 +145,9 @@
    * (https://maketintsandshades.com/)
    */
     --color-neutral-50            : #efefef;
-    --color-neutral-100           : #dfe0e0;
+    --color-neutral-100           : #e6cfa7;
     --color-neutral-150           : #cfd0d0;
-    --color-neutral-200           : #bfc1c0;
+    --color-neutral-200           : #e6cfa7;
     --color-neutral-250           : #afb1b1;
     --color-neutral-300           : #9fa1a1;
     --color-neutral-350           : #8f9291;
@@ -5044,3 +5044,4 @@ td:last-child {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
         }
+
