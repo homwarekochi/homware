@@ -35,17 +35,16 @@
 
 </head>
 <style>
-            .left-section {
-            background-image: url(images/enq.jpg);
-            color: white;
-            padding: 60px 40px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-        }
-
+    .left-section {
+        background-image: url(images/enq.jpg);
+        color: white;
+        padding: 60px 40px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
 </style>
 
 <body id="top">
@@ -789,92 +788,6 @@
     </section>
 
     <div class="container2">
-  <div class="container1">
-    <div class="left-section">
-      <h1>Let's Chat</h1>
-      <p>Whether you have a question, want to start a project or simply want to connect.</p>
-      <p>Feel free to send me a message in the contact form</p>
-    </div>
-
-    <div class="right-section">
-      <div class="form-header">
-        <h2 style="color: aliceblue;">Enquiry Now</h2>
-        <p class="required-text">* Required</p>
-      </div>
-
-      <form id="contactForm">
-        <div class="form-group">
-          <input type="text" id="name" name="name" placeholder="Name *" required>
-        </div>
-
-        <div class="form-group">
-          <input type="email" id="email" name="email" placeholder="Email *" required>
-        </div>
-
-        <div class="form-group">
-          <input type="tel" id="phone" name="phone" placeholder="Phone">
-        </div>
-
-        <div class="form-group">
-          <textarea id="message" name="message" placeholder="Message"></textarea>
-        </div>
-
-        <button type="submit" class="submit-btn" id="submitBtn">
-          <span class="btn-text">SUBMIT</span>
-        </button>
-
-        <div class="status-message" id="statusMessage"></div>
-      </form>
-    </div>
-  </div>
-</div>
-
-<script>
-  // Replace with your Google Apps Script Web App URL
-  const scriptURL = "https://script.google.com/macros/s/AKfycbxwVrn5u8lcKzPxrlgxU6ycPOd8Wh-NQluvx7psQjeuXK0zwOgGfwGYgnHpXOJl2KbcFw/exec";
-
-  document.getElementById("contactForm").addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    // Collect form data
-    const formData = {
-      name: document.getElementById("name").value,
-      email: document.getElementById("email").value,
-      phone: document.getElementById("phone").value,
-      message: document.getElementById("message").value
-    };
-
-    // Update status
-    const statusMessage = document.getElementById("statusMessage");
-    statusMessage.textContent = "Submitting...";
-    statusMessage.style.color = "yellow";
-
-    // Send to Google Apps Script Web App
-    fetch(scriptURL, {
-      method: "POST",
-      body: JSON.stringify(formData),
-      headers: { "Content-Type": "application/json" }
-    })
-      .then(response => response.json())
-      .then(data => {
-        if (data.result === "success") {
-          statusMessage.textContent = "✅ Thank you! Your enquiry has been submitted.";
-          statusMessage.style.color = "lightgreen";
-          document.getElementById("contactForm").reset();
-        } else {
-          statusMessage.textContent = "⚠️ Something went wrong. Please try again.";
-          statusMessage.style.color = "red";
-        }
-      })
-      .catch(error => {
-        statusMessage.textContent = "❌ Error: " + error.message;
-        statusMessage.style.color = "red";
-      });
-  });
-</script>
-
-<!-- 
-    <div class="container2">
         <div class="container1">
             <div class="left-section">
                 <h1>Let's Chat</h1>
@@ -896,6 +809,7 @@
                     <div class="form-group">
                         <input type="email" id="email" name="email" placeholder="Email *" required>
                     </div>
+
                     <div class="form-group">
                         <input type="tel" id="phone" name="phone" placeholder="Phone">
                     </div>
@@ -913,7 +827,56 @@
             </div>
         </div>
     </div>
-    </div><br><br> -->
+
+   <script>
+  const form = document.getElementById("contactForm");
+  const statusMessage = document.getElementById("statusMessage");
+
+  // Replace with your own Google Apps Script Web App URL
+  const scriptURL = "https://script.google.com/macros/s/AKfycbxcPbpl3Re6FYMIAKV8LOmOEphJv2XI4EQrCJRWyK73nu8ZHeLd_spPIEwiBGuVf8FZQQ/exec";
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // Collect form data
+    const formData = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      phone: document.getElementById("phone").value,
+      message: document.getElementById("message").value,
+    };
+
+    try {
+      const response = await fetch(scriptURL, {
+        method: "POST",
+        mode: "cors",  // important for cross-origin requests
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) throw new Error("Network response was not ok");
+
+      const result = await response.json();
+
+      if (result.result === "success") {
+        statusMessage.style.color = "lightgreen";
+        statusMessage.innerText = "✅ Your enquiry has been submitted!";
+        form.reset();
+      } else {
+        throw new Error(result.message || "Something went wrong!");
+      }
+    } catch (error) {
+      console.error("Error!", error);
+      statusMessage.style.color = "red";
+      statusMessage.innerText = "❌ Failed to send. Please try again later.";
+    }
+  });
+</script>
+
+
+
     <footer id="footer" class="container s-footer">
         <div class="row s-footer__main  " id="contact">
             <div class="column xl-3 lg-12 footer-block s-footer__main-start">
@@ -951,19 +914,16 @@
                                 10:00pm</span></li>
                     </ul>
                 </div>
-            </div> <!-- s-footer__main-end -->
-        </div> <!-- end  s-footer__main-content -->
+            </div> 
+        </div>
 
         <div class="row s-footer__bottom">
             <div class="column xl-6 lg-12">
                 <p class="ss-copyright" style="color: #e6cfa7;">
                     <span>© Homware 2025</span>
-                    <!-- <span>Design by <a href="https://styleshout.com/">StyleShout</a></span>
-
-                    Distributed by <a href="" target="_blank"></a> -->
                 </p>
             </div>
-        </div> <!-- end s-footer__bottom -->
+        </div>
 
 
         <div class="ss-go-top">
