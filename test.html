@@ -1,0 +1,81 @@
+
+
+<!DOCTYPE html>
+<html>
+<body>
+
+
+
+<label >First Number:</label>
+<input type="number" id="num1">
+
+
+<label >Second Number:</label>
+<input type="number" id="num2">
+<button onclick="addNumbers()">Add</button>
+<p id="result"></p> 
+
+<script>
+  function addNumbers() {
+    let n1 = parseInt(document.getElementById("num1").value);
+    let n2 = parseInt(document.getElementById("num2").value);
+    document.getElementById("result").innerHTML = n1 + n2;
+  }
+
+
+
+
+  for (let i = 1; i <= 5; i++) {
+  console.log("Number: " + i);
+}
+
+</script>
+<p id="para">This is a paragraph.</p>
+<button onclick="changeColor()">Change Color</button>
+
+<script>
+function changeColor() {
+  document.getElementById("para").style.color = "red";
+}
+</script>
+<p id="info">This is some information.</p>
+<button onclick="hideInfo()">Hide</button>
+<button onclick="showInfo()">Show</button>
+
+<script>
+function hideInfo() {
+  document.getElementById("info").style.display = "none";
+}
+
+function showInfo() {
+  document.getElementById("info").style.display = "block";
+}
+</script>
+<select onchange="showColor(this.value)">
+  <option value="Red">Red</option>
+  <option value="Green">Green</option>
+  <option value="Blue">Blue</option>
+</select>
+<p id="colorOutput"></p>
+
+<script>
+function showColor(color) {
+  document.getElementById("colorOutput").innerHTML = "You selected: " + color;
+}
+</script>
+<p id="hoverText" onmouseover="mouseOver()" onmouseout="mouseOut()">Hover over me!</p>
+
+<script>
+function mouseOver() {
+  document.getElementById("hoverText").style.color = "red";
+}
+function mouseOut() {
+  document.getElementById("hoverText").style.color = "black";
+}
+</script>
+<script>
+setInterval(function() {
+  console.log("This prints every 2 seconds");
+}, 2000);
+</script>
+

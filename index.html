@@ -766,7 +766,7 @@
                         </div>
                         <div class="testimonials-slider__slide swiper-slide" style="color: #e6cfa7;">
                             <div class="testimonials-slider__author">
-                                <img src="images/avt1.jpg" alt="Author image" class="testimonials-slider__avatar">
+                                <img src="images/avt1.jpg" alt="Family of three posing together in formal attire, with the adults standing behind the child. The background is a plain light-colored studio setting. The family appears happy and close, with a warm and affectionate atmosphere." class="testimonials-slider__avatar">
                                 <cite class="testimonials-slider__cite" style="color: #e6cfa7;">
                                     Amalnath M U
                                     <span style="color: #e6cfa7;">Kuttikanam</span>
@@ -779,7 +779,6 @@
                                 time.
                             </p>
                         </div>
-
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
@@ -828,55 +827,52 @@
         </div>
     </div>
 
-   <script>
-  const form = document.getElementById("contactForm");
-  const statusMessage = document.getElementById("statusMessage");
+    <script>
+        const form = document.getElementById("contactForm");
+        const statusMessage = document.getElementById("statusMessage");
 
-  // Replace with your own Google Apps Script Web App URL
-  const scriptURL = "https://script.google.com/macros/s/AKfycbxcPbpl3Re6FYMIAKV8LOmOEphJv2XI4EQrCJRWyK73nu8ZHeLd_spPIEwiBGuVf8FZQQ/exec";
+        // Replace with your own Google Apps Script Web App URL
+        const scriptURL = "https://script.google.com/macros/s/AKfycbxcPbpl3Re6FYMIAKV8LOmOEphJv2XI4EQrCJRWyK73nu8ZHeLd_spPIEwiBGuVf8FZQQ/exec";
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
 
-    // Collect form data
-    const formData = {
-      name: document.getElementById("name").value,
-      email: document.getElementById("email").value,
-      phone: document.getElementById("phone").value,
-      message: document.getElementById("message").value,
-    };
+            // Collect form data
+            const formData = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                phone: document.getElementById("phone").value,
+                message: document.getElementById("message").value,
+            };
 
-    try {
-      const response = await fetch(scriptURL, {
-        method: "POST",
-        mode: "cors",  // important for cross-origin requests
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+            try {
+                const response = await fetch(scriptURL, {
+                    method: "POST",
+                    mode: "cors",  // important for cross-origin requests
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(formData),
+                });
 
-      if (!response.ok) throw new Error("Network response was not ok");
+                if (!response.ok) throw new Error("Network response was not ok");
 
-      const result = await response.json();
+                const result = await response.json();
 
-      if (result.result === "success") {
-        statusMessage.style.color = "lightgreen";
-        statusMessage.innerText = "✅ Your enquiry has been submitted!";
-        form.reset();
-      } else {
-        throw new Error(result.message || "Something went wrong!");
-      }
-    } catch (error) {
-      console.error("Error!", error);
-      statusMessage.style.color = "red";
-      statusMessage.innerText = "❌ Failed to send. Please try again later.";
-    }
-  });
-</script>
-
-
-
+                if (result.result === "success") {
+                    statusMessage.style.color = "lightgreen";
+                    statusMessage.innerText = "✅ Your enquiry has been submitted!";
+                    form.reset();
+                } else {
+                    throw new Error(result.message || "Something went wrong!");
+                }
+            } catch (error) {
+                console.error("Error!", error);
+                statusMessage.style.color = "red";
+                statusMessage.innerText = "❌ Failed to send. Please try again later.";
+            }
+        });
+    </script>
     <footer id="footer" class="container s-footer">
         <div class="row s-footer__main  " id="contact">
             <div class="column xl-3 lg-12 footer-block s-footer__main-start">
@@ -892,7 +888,7 @@
                 <div class="grid-cols__column footer-block">
                     <h6 style="color: #e6cfa7;">Location</h6>
                     <p style="color: #e6cfa7;">
-                        Kakkanad <br>Mavelipuram Road
+            Vallathol Junction, near Cochin suburban club <br>Kakkanad, Kochi, Kerala 
 
                     </p>
                 </div>
@@ -914,7 +910,7 @@
                                 10:00pm</span></li>
                     </ul>
                 </div>
-            </div> 
+            </div>
         </div>
 
         <div class="row s-footer__bottom">
@@ -924,7 +920,6 @@
                 </p>
             </div>
         </div>
-
 
         <div class="ss-go-top">
             <a class="smoothscroll" title="Back to Top" href="#top">
@@ -936,11 +931,9 @@
                 </svg>
             </a>
             <span>Back To Top</span>
-        </div> <!-- end ss-go-top -->
-
-    </footer> <!-- end s-footer -->
-
-    </div> <!-- end page-wrap -->
+        </div>
+    </footer>
+    </div>
 
 
 
